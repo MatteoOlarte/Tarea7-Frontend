@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	/* Fonts */
+	--font-family-heading: "Roboto Slab";
+	--font-family-primary: "Roboto";
+	--font-family-secondary: "Roboto Flex";
+
+	/* Color Palette */
+	--mdc-theme-primary: #6024c6;
+	--mdc-theme-primary-rbg: 80, 0, 184;
+
+	--mdc-theme-secondary: #008577;
+	--mdc-theme-secondary-rbg: 0, 131, 117;
+	--mdc-theme-secondary-hl: 174, 100%;
+
+	--mdc-theme-tertiary: #3f2574;
+	--mdc-theme-tertiary-rbg: 63, 37, 116;
+
+	--mdc-theme-error: #da342e;
+	--mdc-theme-error-rbg: 218, 52, 46;
+
+	--mdc-theme-surface-1: #ffffff;
+	--mdc-theme-surface-2: #f8f1ff;
+	--mdc-theme-surface-3: #f3ebfb;
+	--mdc-theme-surface-4: #ede5f5;
+	--mdc-theme-surface-5: #e7dfef;
+	--mdc-theme-stroke-color: #635c6f;
+	--mdc-theme-shadow-color: #9790a2;
+	--mdc-theme-on-surface: #1d1a25;
+	--mdc-theme-on-surface-variant: #464050;
+	--mdc-theme-on-surface-inverse: #fff9ff;
+	--mdc-theme-on-surface-inverse-variant: #d0c7db;
+
+	/*  */
+	--mdc-theme-surface-maxwidth: 1350px;
+	--mdc-theme-surface-padding-x: 24px;
+	--mdc-theme-surface-padding-y: 12px;
+}
+
+
+.color-mdc-on-surface {
+	color: var(--mdc-theme-on-surface) !important;
+}
+
+.color-mdc-on-surface-variant {
+	color: var(--mdc-theme-on-surface-variant) !important;
+}
+
+.color-mdc-on-surface-inverse {
+	color: var(--mdc-theme-on-surface-inverse) !important;
+}
+
+.color-mdc-on-surface-inverse-variant {
+	color: var(--mdc-theme-on-surface-inverse-variant) !important;
+}
+
+.font-family-heading {
+	font-family: var(--font-family-heading) !important;
+}
+
+.font-family-primary {
+	font-family: var(--font-family-primary) !important;
+}
+
+.font-family-secondary {
+	font-family: var(--font-family-secondary) !important;
+}
+
+.surface {
+	padding: var(--mdc-theme-surface-padding-y) var(--mdc-theme-surface-padding-x);
+}
+
+.surface.surface-full {
+	width: 100%;
+}
+
+.surface.surface-auto {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	max-width: var(--mdc-theme-surface-maxwidth);
+}
+
+.bg-surface-elevated-1 {
+	background-color: var(--mdc-theme-surface-1) !important;
+}
+
+.bg-surface-elevated-2 {
+	background-color: var(--mdc-theme-surface-2) !important;
+}
+
+.bg-surface-elevated-3 {
+	background-color: var(--mdc-theme-surface-3) !important;
+}
+
+.bg-mdc-secondary {
+	background-color: var(--mdc-theme-secondary) !important;
+}
+
+.bg-mdc-primary {
+	background-color: var(--mdc-theme-primary) !important;
+}
+
+.bg-mdc-tertiary {
+	background-color: var(--mdc-theme-tertiary) !important;
+}
+
+.bg-mdc-error {
+	background-color: var(--mdc-theme-error) !important;
+}
+
+.ff-heading {
+	font-family: var(--font-family-heading) !important;
+}
+
+.ff-primary {
+	font-family: var(--font-family-primary) !important;
+}
+
+.ff-secondary {
+	font-family: var(--font-family-secondary) !important;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}

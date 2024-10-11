@@ -1,0 +1,46 @@
+nav.navbar {
+  --bs-navbar-color: var(--mdc-theme-tertiary);
+  --bs-navbar-hover-color: var(--mdc-theme-secondary);
+  --bs-navbar-active-color: var(--mdc-theme-secondary);
+  --bs-navbar-brand-color: var(--mdc-theme-primary);
+  --bs-navbar-brand-hover-color: var(--mdc-theme-primary);
+  --bs-navbar-brand-active-color: var(--mdc-theme-primary);
+  
+	font-size: 17px;
+	user-select: none;
+	font-family: var(--font-family-primary);
+	background-color: transparent;
+  transition: background-color 400ms cubic-bezier(.28,.11,.32,1);
+}
+
+nav.navbar .container-fluid.auto {
+	width: 100%;
+	max-width: var(--mdc-theme-surface-maxwidth);
+	margin: 0 auto;
+}
+
+nav.navbar .navbar-brand *,
+nav.navbar .navbar-brand {
+	font-family: var(--font-family-heading);
+}
+
+nav.navbar .navbar-toggler:focus {
+  color: rgba(var(--mdc-theme-secondary-rbg), 0.4);
+}
+
+nav.navbar .navbar-nav svg {
+  fill: currentColor;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+nav.navbar .offcanvas-title,
+nav.navbar .offcanvas-title * {
+  font-family: var(--font-family-heading);
+  color: var(--mdc-theme-primary);
+}
+
+nav.navbar .navbar-is-sticking {
+  background-color: var(--bs-body-tertiary);
+
+}

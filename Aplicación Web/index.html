@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Contable</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=refresh"
+    />
+  </head>
+
+  <body class="bg-light">
+    <header class="sticky-top">
+      <nav
+        class="navbar navbar-expand-lg bg-body-secondary"
+        scroll-target="banner-carousel"
+        data-bs-theme="dark"
+      >
+        <div class="container-fluid auto">
+          <a href="./index.html" class="navbar-brand"> Sistema Contable </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#navbar-offcanvas"
+            aria-controls="navbar-offcanvas"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="navbar-offcanvas"
+            aria-labelledby="navbar-offcanvas-title"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="navbar-offcanvas-title">
+                MediCare <span class="fw-bold text-color-secondary">Supplies</span>
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="offcanvas-body">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a href="#networth-section" class="nav-link active" aria-current="page">
+                    Patrimonio
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#transactions-section" class="nav-link"> Transiciones </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#cost-of-sales-section" class="nav-link"> Valor por Venta </a>
+                </li>
+                <li class="nav-item">
+                  <button role="button" class="btn btn-primary ms-3" id="btn-logout">Salir</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-2">
+      <section class="surface surface-auto mb-5">
+        <div class="row gx-4">
+          <div class="col-auto">
+            <img src="..." alt="..." class="img img-fluid" id="user-photo-img" />
+          </div>
+
+          <div class="col-md-10 col-8">
+            <h2 id="user-name-label" class="ff-heading">user name</h2>
+            <div>
+              <p id="user-email-label" class="m-0 p-0 ff-secondary color-mdc-on-surface-variant">
+                email
+              </p>
+              <p id="user-cc-label" class="m-0 p-0 ff-secondary color-mdc-on-surface-variant">cc</p>
+              <p id="user-phone-label" class="m-0 p-0 ff-secondary color-mdc-on-surface-variant">
+                phone
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="surface surface-auto bg-surface-elevated-1 mb-3" id="networth-section">
+        <div>
+          <h3 class="fw-bold color-mdc-on-surface ff-heading">Patrimonio</h3>
+          <span class="color-mdc-on-surface-variant">
+            Aquí puedes ver el valor total de tu <strong>patrimonio</strong>. Se calcula sumando
+            todos tus <b>activos</b> (lo que posees) y restando todos tus <b>pasivos</b> (lo que
+            debes). Es una forma sencilla de conocer tu <strong>salud financiera</strong>.
+          </span>
+        </div>
+        <div id="networth-value-section" class="d-flex align-items-center">
+          <span class="fs-1">$0</span>
+          <button class="btn btn-outline-primary ms-auto" id="btn-update-networth" title="Actualizar">
+            <span class="material-symbols-outlined"> refresh </span>
+          </button>
+        </div>
+        <div id="networth-create-section">
+          <button class="btn btn-primary mt-3" id="btn-create-networth">Crear Patrimonio</button>
+        </div>
+      </section>
+
+      <section class="mb-3">
+        <template id="fitem-template">
+          <tr>
+            <th class="fitem-id" scope="row">1</th>
+            <td class="fitem-name">Casa</td>
+            <td class="fitem-value">$150,000</td>
+          </tr>
+        </template>
+
+        <div class="surface surface-auto p-0">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="surface surface-full bg-surface-elevated-1">
+                <div>
+                  <h3 class="fw-bold color-mdc-on-surface ff-heading">Mis Activos</h3>
+                  <span class="color-mdc-on-surface-variant">
+                    Consulta los bienes y recursos que posees.
+                  </span>
+                </div>
+                <div>
+                  <span class="fs-1" id="actives-value">$0</span>
+                </div>
+                <div>
+                  <table class="table mt-3">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Valor</th>
+                      </tr>
+                    </thead>
+                    <tbody id="actives-container"></tbody>
+                  </table>
+                </div>
+
+                <div>
+                  <button
+                    class="btn btn-primary mt-3"
+                    data-bs-toggle="modal"
+                    data-bs-target="#create-active-dialog"
+                  >
+                    Agregar Activo
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="surface surface-full bg-surface-elevated-1">
+                <h3 class="fw-bold color-mdc-on-surface ff-heading">Mis Pasivos</h3>
+                <span class="color-mdc-on-surface-variant">
+                  Consulta tus deudas y obligaciones pendientes.
+                </span>
+                <div>
+                  <span class="fs-1" id="passives-value">$0</span>
+                </div>
+                <div>
+                  <table class="table mt-3">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Valor</th>
+                      </tr>
+                    </thead>
+                    <tbody id="passives-container"></tbody>
+                  </table>
+                </div>
+                <div>
+                  <button
+                    class="btn btn-primary mt-3"
+                    data-bs-toggle="modal"
+                    data-bs-target="#create-passive-dialog"
+                  >
+                    Agregar Pasivo
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="surface surface-auto bg-surface-elevated-1" id="transactions-section">
+        <div>
+          <h3 class="fw-bold color-mdc-on-surface ff-heading">Ingresos y Egresos</h3>
+          <span class="color-mdc-on-surface-variant">
+            Recopilación de los últimos ingresos y gatos.
+          </span>
+        </div>
+        <div class="mt-4">
+          <!-- Lista Flush de Bootstrap -->
+          <ul class="list-group list-group-flush">
+            <!-- Ingreso -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>11/09/2024</span>
+              <span class="badge bg-success rounded-pill">$1,000,000</span>
+            </li>
+            <!-- Egreso 1 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>05/09/2024</span>
+              <span class="badge bg-danger rounded-pill">$300,000</span>
+            </li>
+            <!-- Egreso 2 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>02/09/2024</span>
+              <span class="badge bg-danger rounded-pill">$300,000</span>
+            </li>
+            <!-- Egreso 3 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>29/08/2024</span>
+              <span class="badge bg-danger rounded-pill">$300,000</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <div class="surface surface-auto mb-3">
+        <span class="color-mdc-on-surface-variant">
+          *Por el momento, los ingresos y egresos no se actualizan automáticamente. Estamos
+          trabajando para implementar esta funcionalidad en el futuro.
+        </span>
+      </div>
+
+      <section class="surface surface-auto bg-surface-elevated-1" id="cost-of-sales-section">
+        <div>
+          <h3 class="fw-bold color-mdc-on-surface ff-heading">Consto de Ventas</h3>
+          <span class="color-mdc-on-surface-variant">
+            El término costo de ventas (o costo de los bienes vendidos, COGS por sus siglas en
+            inglés, Cost of Goods Sold) se refiere al costo directo asociado a la producción o
+            adquisición de los bienes que una empresa vende durante un período determinado.
+          </span>
+        </div>
+
+        <div>
+          <h5 class="fw-bold color-mdc-on-surface">Detalle del Costo de Ventas - 2023</h5>
+          <ul class="list-group list-group-flush">
+            <!-- Materia prima -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Materia Prima (telas, hilos, botones)
+              <span class="badge bg-secondary rounded-pill">$200,000</span>
+            </li>
+            <!-- Mano de obra directa -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Mano de Obra Directa (salarios de los empleados)
+              <span class="badge bg-secondary rounded-pill">$150,000</span>
+            </li>
+            <!-- Costos de fabricación -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Costos de Fabricación (alquiler, energía, maquinaria)
+              <span class="badge bg-secondary rounded-pill">$50,000</span>
+            </li>
+            <!-- Otros costos directos -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Otros Costos Directos
+              <span class="badge bg-secondary rounded-pill">$30,000</span>
+            </li>
+            <!-- Total del Costo de Ventas -->
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center bg-light fw-bold"
+            >
+              Total Costo de Ventas
+              <span class="badge bg-primary rounded-pill">$430,000</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-center py-3 mt-5">
+      <p class="mb-0">&copy; 2024 Sistema Contable Empresarial. Todos los derechos reservados.</p>
+    </footer>
+
+    <!--#region modals and alertdialogs -->
+    <div
+      class="modal fade"
+      id="create-active-dialog"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 color-mdc-on-surface ff-heading" id="exampleModalLabel">
+              Agregar un Activo
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <form id="create-active-form">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="txt-active-name" class="form-label"> Nombre </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="txt-active-name"
+                  required
+                  maxlength="250"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="txt-active-price" class="form-label">Valor (COP)</label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="number" class="form-control" id="txt-active-price" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="create-passive-dialog"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 color-mdc-on-surface ff-heading" id="exampleModalLabel">
+              Agregar un Pasivo
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <form id="create-passive-form">
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="txt-passive-name" class="form-label"> Nombre </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="txt-passive-name"
+                  required
+                  maxlength="250"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="txt-passive-price" class="form-label">Valor (COP)</label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="number" class="form-control" id="txt-passive-price" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--#endregion-->
+
+    <script src="./index.js" type="module"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
